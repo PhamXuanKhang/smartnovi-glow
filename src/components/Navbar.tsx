@@ -55,10 +55,11 @@ const Navbar = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button 
+          <Button
             className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold px-6 py-2 rounded-full hover:glow-yellow transition-all duration-300 hover:scale-105"
+            onClick={() => window.open('https://www.facebook.com/smartnovi.tech', '_blank')}
           >
-            Đăng ký nhận tin
+            Đặt mua trước
           </Button>
         </div>
 
@@ -90,10 +91,11 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button 
+            <Button
               className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold w-full rounded-full"
+              onClick={() => window.open('https://www.facebook.com/smartnovi.tech', '_blank')}
             >
-              Đăng ký nhận tin
+              Đặt mua trước
             </Button>
           </div>
         </motion.div>

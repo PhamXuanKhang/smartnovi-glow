@@ -12,7 +12,7 @@ const features = [
   },
   {
     icon: Bot,
-    title: "Trợ lý AI Xiaozhi",
+    title: "Trợ lý AI Lily",
     description: "Hỏi đáp tiếng Việt tự nhiên, tra cứu thông tin, giải bài tập và trò chuyện thông minh.",
     color: "secondary" as const,
     details: ["Nhận diện giọng nói", "Trả lời tự nhiên", "Hỗ trợ học tập"],
@@ -65,7 +65,7 @@ const Features = () => {
             Tính năng <span className="text-gradient">nổi bật</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            SmartNovi kết hợp công nghệ AI tiên tiến với thiết kế hiện đại, 
+            SmartNovi kết hợp công nghệ AI tiên tiến với thiết kế hiện đại,
             mang đến trải nghiệm học tập hoàn toàn mới.
           </p>
         </motion.div>
@@ -82,12 +82,11 @@ const Features = () => {
             <motion.div key={index} variants={itemVariants}>
               <GlassCard className="h-full group">
                 {/* Icon */}
-                <div 
-                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${
-                    feature.color === "primary" 
-                      ? "bg-primary/20 text-primary" 
+                <div
+                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${feature.color === "primary"
+                      ? "bg-primary/20 text-primary"
                       : "bg-secondary/20 text-secondary"
-                  }`}
+                    }`}
                 >
                   <feature.icon className="w-7 h-7" />
                 </div>
@@ -106,9 +105,8 @@ const Features = () => {
                 <ul className="space-y-2">
                   {feature.details.map((detail, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span className={`w-1.5 h-1.5 rounded-full ${
-                        feature.color === "primary" ? "bg-primary" : "bg-secondary"
-                      }`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${feature.color === "primary" ? "bg-primary" : "bg-secondary"
+                        }`} />
                       {detail}
                     </li>
                   ))}

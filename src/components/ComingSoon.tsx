@@ -34,11 +34,11 @@ const ComingSoon = () => {
 
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Sắp ra mắt <span className="text-gradient-reverse">Q2/2026</span>
+            Sắp ra mắt <span className="text-gradient-reverse">T2/2026</span>
           </h2>
 
           <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-            Hãy là người đầu tiên sở hữu SmartNovi! Đăng ký ngay để nhận thông tin 
+            Hãy là người đầu tiên sở hữu SmartNovi! Đăng ký ngay để nhận thông tin
             ưu đãi độc quyền dành cho khách hàng đặt trước.
           </p>
 
@@ -71,9 +71,10 @@ const ComingSoon = () => {
             <Button
               size="lg"
               className="bg-gradient-to-r from-secondary to-primary text-primary-foreground font-semibold px-10 py-6 rounded-full hover:glow-purple transition-all duration-300 text-lg"
+              onClick={() => window.open('https://www.facebook.com/smartnovi.tech', '_blank')}
             >
               <Bell className="w-5 h-5 mr-2" />
-              Đăng ký nhận thông tin
+              Đặt mua trước
             </Button>
           </motion.div>
 

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Facebook, Instagram, Youtube, Heart } from "lucide-react";
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Facebook, href: "https://www.facebook.com/smartnovi.tech", label: "Facebook" },
   { icon: Instagram, href: "#", label: "Instagram" },
   { icon: Youtube, href: "#", label: "YouTube" },
 ];

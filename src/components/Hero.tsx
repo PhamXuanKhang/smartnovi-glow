@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 
@@ -8,7 +8,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Particle Effects */}
       <ParticleBackground particleCount={30} />
-      
+
       {/* Background Gradient Orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-[100px] pointer-events-none" />
@@ -30,7 +30,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
             >
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm text-muted-foreground">Coming Soon - Q2/2026</span>
+              <span className="text-sm text-muted-foreground">Coming Soon - T2/2026</span>
             </motion.div>
 
             {/* Headline */}
@@ -51,7 +51,7 @@ const Hero = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              Tích hợp trợ lý ảo <span className="text-secondary font-semibold">Xiaozhi</span>, 
+              Tích hợp trợ lý ảo <span className="text-secondary font-semibold">Lily</span>,
               điều khiển giọng nói và ánh sáng bảo vệ mắt thông minh.
             </motion.p>
 
@@ -65,17 +65,20 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold px-8 py-6 rounded-full hover:glow-yellow transition-all duration-300 hover:scale-105 group"
+                onClick={() => window.open('https://www.facebook.com/smartnovi.tech', '_blank')}
               >
-                Khám phá ngay
+                Đặt mua trước
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-border/50 hover:border-primary/50 px-8 py-6 rounded-full transition-all duration-300"
-              >
-                Xem Video Demo
-              </Button>
+              <a href="#demo">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-border/50 hover:border-primary/50 px-8 py-6 rounded-full transition-all duration-300"
+                >
+                  Xem Video Demo
+                </Button>
+              </a>
             </motion.div>
           </motion.div>
 
@@ -89,7 +92,7 @@ const Hero = () => {
             {/* Glow Ring */}
             <div className="absolute w-80 h-80 md:w-96 md:h-96 rounded-full border-2 border-primary/30 animate-pulse" />
             <div className="absolute w-72 h-72 md:w-80 md:h-80 rounded-full border border-secondary/20" />
-            
+
             {/* Product Placeholder */}
             <motion.div
               animate={{ y: [0, -15, 0] }}
@@ -98,7 +101,7 @@ const Hero = () => {
             >
               {/* Lamp Glow Effect */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 to-secondary/30 animate-pulse-glow" />
-              
+
               {/* Lamp Placeholder */}
               <div className="relative z-10 w-48 h-48 md:w-60 md:h-60 rounded-full glass flex flex-col items-center justify-center border border-primary/30">
                 {/* REPLACE WITH PRODUCT IMAGE: src/assets/lamp.png */}
@@ -114,9 +117,9 @@ const Hero = () => {
               transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
               className="absolute top-10 right-10 glass px-3 py-2 rounded-lg"
             >
-              <span className="text-xs text-primary">🎤 "Hey Xiaozhi"</span>
+              <span className="text-xs text-primary">🎤 "Hey Lily"</span>
             </motion.div>
-            
+
             <motion.div
               animate={{ y: [0, 10, 0], x: [0, -5, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, delay: 1 }}
@@ -127,6 +130,22 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Messenger Icon */}
+      <motion.a
+        href="https://www.facebook.com/smartnovi.tech"
+        target="_blank"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        className="absolute top-6 right-6 z-20"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg hover:shadow-blue-500/30 transition-all duration-300">
+          <MessageCircle className="w-6 h-6 text-white" />
+        </div>
+      </motion.a>
 
       {/* Scroll Indicator */}
       <motion.div
