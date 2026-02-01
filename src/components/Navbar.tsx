@@ -34,9 +34,14 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="text-2xl font-bold text-gradient glow-text-yellow">
-          SmartNovi
+        {/* Logo with favicon */}
+        <a href="#" className="flex items-center space-x-2 text-2xl font-bold text-gradient glow-text-yellow">
+          <img
+            src="/favicon.ico"
+            alt="SmartNovi Logo"
+            className="w-8 h-8"
+          />
+          <span>SmartNovi</span>
         </a>
 
         {/* Desktop Navigation */}

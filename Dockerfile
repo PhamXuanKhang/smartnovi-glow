@@ -1,6 +1,5 @@
 # ===== Build stage =====
 FROM node:22-alpine AS builder
-
 WORKDIR /app
 
 COPY package*.json ./
@@ -9,23 +8,24 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-# ===== Runtime stage =====
-FROM nginx:alpine
+# ===== Runtime stage (Node serves static) =====
+FROM node:22-alpine AS runner
+WORKDIR /app
 
-# Xóa config mặc định
-RUN rm /etc/nginx/conf.d/default.conf
+ENV NODE_ENV=production
 
-# Copy nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
+# Cài "serve" để serve thư mục dist
+RUN npm install -g serve
 
-# Copy build output của Vite
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy dist từ build stage
+COPY --from=builder /app/dist ./dist
 
-# Expose port 3000 for production
+# App listen port 3000 trong container
 EXPOSE 3000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000/ || exit 1
+# Healthcheck (Node image không có curl sẵn; dùng wget)
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget -qO- http://127.0.0.1:3000/ >/dev/null 2>&1 || exit 1
 
-CMD ["nginx", "-g", "daemon off;"]
+# Serve SPA (single page app)
+CMD ["serve", "-s", "dist", "-l", "3000"]
