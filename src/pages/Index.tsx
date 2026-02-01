@@ -13,7 +13,7 @@ const Index = () => {
       <div
         className="fixed inset-0 z-0 opacity-20 pointer-events-none"
         style={{
-          backgroundImage: "url('/src/assets/tet-background.png')",
+          backgroundImage: "url('/tet-background.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat"
