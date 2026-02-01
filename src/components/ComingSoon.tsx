@@ -2,8 +2,43 @@ import { motion } from "framer-motion";
 import { Bell, Calendar, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
+import { useEffect, useState } from "react";
 
 const ComingSoon = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Set the release date - you can modify this date
+  const releaseDate = new Date('February 15, 2026 12:00:00').getTime(); // Change this date as needed
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = new Date().getTime();
+      const difference = releaseDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    // Calculate immediately and then update every second
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, [releaseDate]);
+
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Particle Effects */}
@@ -78,7 +113,7 @@ const ComingSoon = () => {
             </Button>
           </motion.div>
 
-          {/* Countdown Placeholder */}
+          {/* Countdown Timer */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -87,10 +122,10 @@ const ComingSoon = () => {
             className="mt-12 grid grid-cols-4 gap-4 max-w-md mx-auto"
           >
             {[
-              { value: "120", label: "Ngày" },
-              { value: "08", label: "Giờ" },
-              { value: "45", label: "Phút" },
-              { value: "32", label: "Giây" },
+              { value: String(timeLeft.days).padStart(2, '0'), label: "Ngày" },
+              { value: String(timeLeft.hours).padStart(2, '0'), label: "Giờ" },
+              { value: String(timeLeft.minutes).padStart(2, '0'), label: "Phút" },
+              { value: String(timeLeft.seconds).padStart(2, '0'), label: "Giây" },
             ].map((item, index) => (
               <div key={index} className="glass rounded-xl p-4">
                 <div className="text-2xl md:text-3xl font-bold text-gradient">

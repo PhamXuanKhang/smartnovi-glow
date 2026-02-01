@@ -102,12 +102,16 @@ const Hero = () => {
               {/* Lamp Glow Effect */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 to-secondary/30 animate-pulse-glow" />
 
-              {/* Lamp Placeholder */}
-              <div className="relative z-10 w-48 h-48 md:w-60 md:h-60 rounded-full glass flex flex-col items-center justify-center border border-primary/30">
+              {/* Lamp Image Placeholder */}
+              <div className="relative z-10 w-48 h-48 md:w-60 md:h-60 rounded-full glass flex items-center justify-center border border-primary/30 overflow-hidden">
                 {/* REPLACE WITH PRODUCT IMAGE: src/assets/lamp.png */}
-                <div className="w-16 h-24 bg-gradient-to-b from-primary to-primary/60 rounded-t-full mb-2" />
-                <div className="w-24 h-4 bg-muted rounded-full" />
-                <p className="text-xs text-muted-foreground mt-4">SmartNovi Lamp</p>
+                <img
+                  src="/src/assets/lamp.png"
+                  alt="SmartNovi Lamp"
+                  className="w-full h-full object-cover rounded-full"
+                />
+
+                <p className="absolute -bottom-6 text-xs text-muted-foreground">SmartNovi Lamp</p>
               </div>
             </motion.div>
 
@@ -131,28 +135,12 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Messenger Icon */}
-      <motion.a
-        href="https://www.facebook.com/smartnovi.tech"
-        target="_blank"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute top-6 right-6 z-20"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg hover:shadow-blue-500/30 transition-all duration-300">
-          <MessageCircle className="w-6 h-6 text-white" />
-        </div>
-      </motion.a>
-
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-20 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
@@ -162,6 +150,25 @@ const Hero = () => {
           <div className="w-1.5 h-3 bg-muted-foreground/50 rounded-full" />
         </motion.div>
       </motion.div>
+
+      {/* Messenger Icon */}
+      <motion.a
+        href="https://www.facebook.com/smartnovi.tech"
+        target="_blank"
+        initial={{ opacity: 0, scale: 0.8, y: 50 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ delay: 1.8, duration: 0.5 }}
+        className="fixed bottom-6 right-6 z-50"
+        whileHover={{ scale: 1.15, rotate: 5 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center shadow-xl hover:shadow-blue-500/40 transition-all duration-300 cursor-pointer border-2 border-white/20">
+          <MessageCircle className="w-7 h-7 text-white" />
+          <span className="absolute top-0 right-0 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+            <span className="w-2 h-2 bg-white rounded-full"></span>
+          </span>
+        </div>
+      </motion.a>
     </section>
   );
 };
