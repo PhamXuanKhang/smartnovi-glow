@@ -1,0 +1,15 @@
+services:
+  smartnovi-web:
+    build: .
+    container_name: smartnovi-web
+    restart: unless-stopped
+    networks:
+      - web
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+
+networks:
+  web:
+    external: true
