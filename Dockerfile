@@ -1,17 +1,31 @@
-FROM node:22-alpine AS deps
+# ===== Build stage =====
+FROM node:22-alpine AS builder
+
 WORKDIR /app
+
 COPY package*.json ./
 RUN npm ci
 
-FROM node:22-alpine AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
-FROM node:22-alpine AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=builder /app ./
+# ===== Runtime stage =====
+FROM nginx:alpine
+
+# Xóa config mặc định
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy nginx config
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy build output của Vite
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose port 3000 for production
 EXPOSE 3000
-CMD ["npm","run","start"]
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/ || exit 1
+
+CMD ["nginx", "-g", "daemon off;"]
