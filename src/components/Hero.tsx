@@ -106,7 +106,7 @@ const Hero = () => {
               <div className="relative z-10 w-48 h-48 md:w-60 md:h-60 rounded-full glass flex items-center justify-center border border-primary/30 overflow-hidden">
                 {/* REPLACE WITH PRODUCT IMAGE: src/assets/lamp.png */}
                 <img
-                  src="/src/assets/lamp.png"
+                  src="/lamp.png"
                   alt="SmartNovi Lamp"
                   className="w-full h-full object-cover rounded-full"
                 />
