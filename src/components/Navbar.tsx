@@ -7,7 +7,7 @@ const navLinks = [
   { label: "Tính năng", href: "#features" },
   { label: "Công nghệ", href: "#tech" },
   { label: "Demo", href: "#demo" },
-  { label: "Liên hệ", href: "#contact" },
+  { label: "Đặt mua", href: "#contact" },
 ];
 
 const Navbar = () => {
@@ -64,7 +64,7 @@ const Navbar = () => {
             className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold px-6 py-2 rounded-full hover:glow-yellow transition-all duration-300 hover:scale-105"
             onClick={() => window.open('https://www.facebook.com/smartnovi.tech', '_blank')}
           >
-            Đặt mua trước
+            Mua ngay
           </Button>
         </div>
 
@@ -100,7 +100,7 @@ const Navbar = () => {
               className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold w-full rounded-full"
               onClick={() => window.open('https://www.facebook.com/smartnovi.tech', '_blank')}
             >
-              Đặt mua trước
+              Mua ngay
             </Button>
           </div>
         </motion.div>

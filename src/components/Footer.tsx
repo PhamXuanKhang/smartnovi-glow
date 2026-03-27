@@ -44,7 +44,7 @@ const Footer = () => {
             <a href="#features" className="hover:text-foreground transition-colors">Tính năng</a>
             <a href="#tech" className="hover:text-foreground transition-colors">Công nghệ</a>
             <a href="#demo" className="hover:text-foreground transition-colors">Demo</a>
-            <a href="#contact" className="hover:text-foreground transition-colors">Liên hệ</a>
+            <a href="#contact" className="hover:text-foreground transition-colors">Đặt mua</a>
           </div>
 
           {/* Divider */}

@@ -30,7 +30,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
             >
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm text-muted-foreground">Coming Soon - T2/2026</span>
+              <span className="text-sm text-muted-foreground">Đã mở bán toàn quốc</span>
             </motion.div>
 
             {/* Headline */}
@@ -52,7 +52,8 @@ const Hero = () => {
               className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
             >
               Tích hợp trợ lý ảo <span className="text-secondary font-semibold">Lily</span>,
-              điều khiển giọng nói và ánh sáng bảo vệ mắt thông minh.
+              điều khiển giọng nói và ánh sáng bảo vệ mắt thông minh. Sản phẩm
+              đang sẵn hàng và có thể đặt mua ngay.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -67,7 +68,7 @@ const Hero = () => {
                 className="bg-gradient-to-r from-primary to-secondary text-primary-foreground font-semibold px-8 py-6 rounded-full hover:glow-yellow transition-all duration-300 hover:scale-105 group"
                 onClick={() => window.open('https://www.facebook.com/smartnovi.tech', '_blank')}
               >
-                Đặt mua trước
+                Đặt mua ngay
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <a href="#demo">

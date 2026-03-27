@@ -1,43 +1,14 @@
 import { motion } from "framer-motion";
-import { Bell, Calendar, Rocket } from "lucide-react";
+import { ShoppingCart, ShieldCheck, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
-import { useEffect, useState } from "react";
 
 const ComingSoon = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  });
-
-  // Set the release date - you can modify this date
-  const releaseDate = new Date('February 15, 2026 12:00:00').getTime(); // Change this date as needed
-
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date().getTime();
-      const difference = releaseDate - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        setTimeLeft({ days, hours, minutes, seconds });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    // Calculate immediately and then update every second
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-
-    return () => clearInterval(timer);
-  }, [releaseDate]);
+  const benefits = [
+    { icon: Truck, text: "Giao hàng toàn quốc" },
+    { icon: ShieldCheck, text: "Bảo hành chính hãng 12 tháng" },
+    { icon: ShoppingCart, text: "Đặt mua và tư vấn nhanh" },
+  ];
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
@@ -64,26 +35,22 @@ const ComingSoon = () => {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="inline-flex items-center justify-center w-20 h-20 rounded-2xl glass mb-8 glow-purple"
           >
-            <Rocket className="w-10 h-10 text-secondary" />
+            <ShoppingCart className="w-10 h-10 text-secondary" />
           </motion.div>
 
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Sắp ra mắt <span className="text-gradient-reverse">T2/2026</span>
+            Đã mở bán <span className="text-gradient-reverse">SmartNovi</span>
           </h2>
 
           <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-            Hãy là người đầu tiên sở hữu SmartNovi! Đăng ký ngay để nhận thông tin
-            ưu đãi độc quyền dành cho khách hàng đặt trước.
+            Sản phẩm đã sẵn sàng giao hàng. Đặt mua ngay để nhận tư vấn và hỗ trợ
+            sử dụng từ đội ngũ SmartNovi.
           </p>
 
           {/* Benefits */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
-            {[
-              { icon: Calendar, text: "Ưu tiên đặt hàng" },
-              { icon: Bell, text: "Nhận tin sớm nhất" },
-              { icon: Rocket, text: "Giảm giá 20%" },
-            ].map((item, index) => (
+            {benefits.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -108,32 +75,23 @@ const ComingSoon = () => {
               className="bg-gradient-to-r from-secondary to-primary text-primary-foreground font-semibold px-10 py-6 rounded-full hover:glow-purple transition-all duration-300 text-lg"
               onClick={() => window.open('https://www.facebook.com/smartnovi.tech', '_blank')}
             >
-              <Bell className="w-5 h-5 mr-2" />
-              Đặt mua trước
+              <ShoppingCart className="w-5 h-5 mr-2" />
+              Đặt mua ngay
             </Button>
           </motion.div>
 
-          {/* Countdown Timer */}
+          {/* Support Note */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-12 grid grid-cols-4 gap-4 max-w-md mx-auto"
+            className="mt-12 max-w-xl mx-auto"
           >
-            {[
-              { value: String(timeLeft.days).padStart(2, '0'), label: "Ngày" },
-              { value: String(timeLeft.hours).padStart(2, '0'), label: "Giờ" },
-              { value: String(timeLeft.minutes).padStart(2, '0'), label: "Phút" },
-              { value: String(timeLeft.seconds).padStart(2, '0'), label: "Giây" },
-            ].map((item, index) => (
-              <div key={index} className="glass rounded-xl p-4">
-                <div className="text-2xl md:text-3xl font-bold text-gradient">
-                  {item.value}
-                </div>
-                <div className="text-xs text-muted-foreground">{item.label}</div>
-              </div>
-            ))}
+            <div className="glass rounded-xl p-5 text-sm text-muted-foreground">
+              Đội ngũ SmartNovi phản hồi tư vấn trong giờ hành chính và hỗ trợ
+              hướng dẫn cài đặt sau khi nhận hàng.
+            </div>
           </motion.div>
         </motion.div>
       </div>
