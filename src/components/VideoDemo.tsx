@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const demoVideoUrl = "https://www.youtube.com/embed/jNQXAC9IVRw";
+const demoVideoUrl = "https://www.youtube.com/embed/Mu2MC1uwKcw";
 
 const VideoDemo = () => {
   return (
